@@ -13,7 +13,9 @@
       />
     </section>
     <h2 class="text-2xl font-medium">Your Bookings</h2>
-    <BookingItem />
+    <section class="grid grid-cols-1 gap-8">
+      <BookingItem v-for="i in 3" :key="i" />
+    </section>
   </main>
 </template>
 
