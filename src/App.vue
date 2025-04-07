@@ -13,9 +13,11 @@
       />
     </section>
     <h2 class="text-2xl font-medium">Your Bookings</h2>
+    <BookingItem />
   </main>
 </template>
 
 <script setup>
 import EventCard from '@/components/EventCard.vue'
+import BookingItem from '@/components/BookingItem.vue'
 </script>
