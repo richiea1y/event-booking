@@ -4,11 +4,11 @@
     <h2 class="text-2xl font-medium">All Events</h2>
     <section class="grid grid-cols-2 gap-8">
       <EventCard
-        v-for="i in 8"
-        :key="i"
-        title="Vue Conference 2024"
-        when="2024-05-01"
-        description="Conference about Vue and JavaScript"
+        v-for="event in events"
+        :key="event.id"
+        :title="event.title"
+        :when="event.date"
+        :description="event.description"
         @register="console.log('Registered!')"
       />
     </section>
