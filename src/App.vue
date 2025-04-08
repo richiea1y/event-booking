@@ -20,6 +20,17 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import EventCard from '@/components/EventCard.vue'
 import BookingItem from '@/components/BookingItem.vue'
+
+const events = ref([])
+
+const fetchEvents = async () => {
+  const response = await fetch('http://localhost:3001/events')
+  events.value = await response.json()
+  console.log(events.value)
+}
+
+onMounted(() => fetchEvents())
 </script>
