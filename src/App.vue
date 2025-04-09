@@ -20,7 +20,12 @@
     <!-- <section v-else>Loading events ...</section> -->
     <h2 class="text-2xl font-medium">Your Bookings</h2>
     <section class="grid grid-cols-1 gap-8">
-      <BookingItem v-for="booking in bookings" :key="booking.id" />
+      <template v-if="!bookingsLoading">
+        <BookingItem v-for="booking in bookings" :key="booking.id" :title="booking.eventTitle" />
+      </template>
+      <template v-else>
+        <LoadingBookingItem v-for="i in 4" :key="i" />
+      </template>
     </section>
   </main>
 </template>
@@ -30,6 +35,7 @@ import { ref, onMounted } from 'vue'
 import EventCard from '@/components/EventCard.vue'
 import BookingItem from '@/components/BookingItem.vue'
 import LoadingEventCard from '@/components/LoadingEventCard.vue'
+import LoadingBookingItem from '@/components/LoadingBookingItem.vue'
 
 const events = ref([])
 const eventsLoading = ref(false)
