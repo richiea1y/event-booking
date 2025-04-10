@@ -29,5 +29,20 @@
       "location": "Convention Center, Downtown"
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": "1744268602260",
+      "userId": 1,
+      "eventId": "3",
+      "eventTitle": "PHP Conference 2022",
+      "status": "confirmed"
+    },
+    {
+      "id": "1744268604271",
+      "userId": 1,
+      "eventId": "2",
+      "eventTitle": "Vue Conference 2023",
+      "status": "confirmed"
+    }
+  ]
 }

@@ -21,7 +21,12 @@
     <h2 class="text-2xl font-medium">Your Bookings</h2>
     <section class="grid grid-cols-1 gap-8">
       <template v-if="!bookingsLoading">
-        <BookingItem v-for="booking in bookings" :key="booking.id" :title="booking.eventTitle" />
+        <BookingItem
+          v-for="booking in bookings"
+          :key="booking.id"
+          :title="booking.eventTitle"
+          :status="booking.status"
+        />
       </template>
       <template v-else>
         <LoadingBookingItem v-for="i in 4" :key="i" />
@@ -71,6 +76,8 @@ const handleRegistration = async (event) => {
     eventTitle: event.title,
     status: 'pending',
   }
+
+  bookings.value.push(newBooking)
 
   await fetch('http://localhost:3001/bookings', {
     method: 'POST',
