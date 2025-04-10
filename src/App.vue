@@ -79,14 +79,23 @@ const handleRegistration = async (event) => {
 
   bookings.value.push(newBooking)
 
-  await fetch('http://localhost:3001/bookings', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      ...newBooking,
-      status: 'confirmed',
-    }),
-  })
+  try {
+    const response = await fetch('http://localhost:3001/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...newBooking,
+        status: 'confirmed',
+      }),
+    })
+
+    if (response.ok) {
+      const index = bookings.value.findIndex((b) => b.id === newBooking.id)
+      bookings.value[index] = await response.json()
+    }
+  } catch (e) {
+    // handle
+  }
 }
 
 onMounted(() => {
