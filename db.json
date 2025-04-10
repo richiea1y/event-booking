@@ -29,20 +29,5 @@
       "location": "Convention Center, Downtown"
     }
   ],
-  "bookings": [
-    {
-      "id": "1744190935568",
-      "userId": 1,
-      "eventId": "4",
-      "eventTitle": "Rust Conference 2021",
-      "status": "confirmed"
-    },
-    {
-      "id": "1744201709642",
-      "userId": 1,
-      "eventId": "2",
-      "eventTitle": "Vue Conference 2023",
-      "status": "confirmed"
-    }
-  ]
+  "bookings": []
 }

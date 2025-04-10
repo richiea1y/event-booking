@@ -69,6 +69,7 @@ const handleRegistration = async (event) => {
     userId: 1,
     eventId: event.id,
     eventTitle: event.title,
+    status: 'pending',
   }
 
   await fetch('http://localhost:3001/bookings', {
