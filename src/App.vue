@@ -92,9 +92,12 @@ const handleRegistration = async (event) => {
     if (response.ok) {
       const index = bookings.value.findIndex((b) => b.id === newBooking.id)
       bookings.value[index] = await response.json()
+    } else {
+      throw new Error('Failed to confirm booking')
     }
   } catch (e) {
-    // handle
+    console.error(`Failed to register for event: `, e)
+    bookings.value = bookings.value.filter((b) => b.id !== newBooking.id)
   }
 }
 
