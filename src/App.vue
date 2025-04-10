@@ -69,6 +69,11 @@ const fetchBookings = async () => {
 }
 
 const handleRegistration = async (event) => {
+  if (bookings.value.some((booking) => booking.eventId === event.id && booking.userId === 1)) {
+    alert('You are already registered for this event.')
+    return
+  }
+
   const newBooking = {
     id: Date.now().toString(),
     userId: 1,
