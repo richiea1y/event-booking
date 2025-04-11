@@ -7,7 +7,7 @@
         :title="event.title"
         :when="event.date"
         :description="event.description"
-        @register="handleRegistration(event)"
+        @register="$emit('register', event)"
       />
     </template>
     <template v-else>
@@ -20,6 +20,8 @@
 import { ref, onMounted } from 'vue'
 import EventCard from '@/components/EventCard.vue'
 import LoadingEventCard from '@/components/LoadingEventCard.vue'
+
+defineEmits(['register'])
 
 const events = ref([])
 const loading = ref(false)
