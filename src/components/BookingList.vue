@@ -1,3 +1,29 @@
-<template></template>
+<template>
+  <section class="grid grid-cols-1 gap-8">
+    <template v-if="!loading">
+      <BookingItem
+        v-for="booking in bookings"
+        :key="booking.id"
+        :title="booking.eventTitle"
+        :status="booking.status"
+        @cancelled="cancelBooking(booking.id)"
+      />
+    </template>
+    <template v-else>
+      <LoadingBookingItem v-for="i in 4" :key="i" />
+    </template>
+  </section>
+</template>
 
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import BookingItem from '@/components/BookingItem.vue'
+import LoadingBookingItem from '@/components/LoadingBookingItem.vue'
+import useBookings from '@/composables/useBookings.js'
+
+const { bookings, loading, fetchBookings, cancelBooking } = useBookings()
+
+onMounted(() => {
+  fetchBookings()
+})
+</script>
