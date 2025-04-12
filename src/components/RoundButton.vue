@@ -6,6 +6,7 @@
     <slot></slot>
   </button>
 </template>
+
 <script setup>
 const variants = {
   default: 'border border-gray-200 hover:bg-gray-100',
