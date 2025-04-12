@@ -27,19 +27,6 @@ import BookingItem from '@/components/BookingItem.vue'
 import LoadingBookingItem from '@/components/LoadingBookingItem.vue'
 import EventList from './components/EventList.vue'
 
-const bookings = ref([])
-const bookingsLoading = ref(false)
-
-const fetchBookings = async () => {
-  bookingsLoading.value = true
-  try {
-    const response = await fetch('http://localhost:3001/bookings')
-    bookings.value = await response.json()
-  } finally {
-    bookingsLoading.value = false
-  }
-}
-
 const findBookingById = (id) => bookings.value.findIndex((b) => b.id === id)
 
 const handleRegistration = async (event) => {
