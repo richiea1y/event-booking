@@ -5,7 +5,7 @@
     <EventList @register="handleRegistration($event)" />
     <h2 class="text-2xl font-medium">Your Bookings</h2>
     <section class="grid grid-cols-1 gap-8">
-      <template v-if="!bookingsLoading">
+      <template v-if="!loading">
         <BookingItem
           v-for="booking in bookings"
           :key="booking.id"
@@ -22,10 +22,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import BookingItem from '@/components/BookingItem.vue'
 import LoadingBookingItem from '@/components/LoadingBookingItem.vue'
-import EventList from './components/EventList.vue'
+import EventList from '@/components/EventList.vue'
+import useBookings from '@/composables/useBookings.js'
+
+const { bookings, loading, fetchBookings } = useBookings()
 
 const findBookingById = (id) => bookings.value.findIndex((b) => b.id === id)
 
