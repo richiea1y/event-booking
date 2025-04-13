@@ -1,6 +1,8 @@
 <template>
   <template v-if="error">
-    <ErrorCard />
+    <ErrorCard :retry="fetchEvents"
+      >Could not load events at the moment. Please try again.
+    </ErrorCard>
   </template>
   <template v-else>
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
